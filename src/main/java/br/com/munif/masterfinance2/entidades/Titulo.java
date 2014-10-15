@@ -6,13 +6,22 @@
 package br.com.munif.masterfinance2.entidades;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author GuilhermeAlmeida
  */
+@Entity
 public class Titulo {
-    
+
+    @Id
+    @GeneratedValue
+    private Long ID;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date data_vencimento;
     private Double valor;
     private Double acrescimo;
@@ -57,5 +66,13 @@ public class Titulo {
 
     public void setPago(Boolean pago) {
         this.pago = pago;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 }
