@@ -35,4 +35,8 @@ public class Programa {
     public static void createEntityManagerFactory() {
         emf=Persistence.createEntityManagerFactory("UnidadeDePersistencia");
     }
+    
+    public static EntityManager getEntityManager(){
+        return emf.createEntityManager();
+    }
 }
