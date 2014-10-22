@@ -5,6 +5,7 @@
  */
 package br.com.munif.masterfinance2.entidades;
 
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -73,5 +74,34 @@ public class ContaCorrente {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ContaCorrente other = (ContaCorrente) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ContaCorrente{" + "id=" + id + ", descricao=" + descricao + ", banco=" + banco + ", agencia=" + agencia + ", conta=" + conta + ", limite=" + limite + '}';
+    }
+    
+    
 
 }
