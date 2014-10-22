@@ -92,17 +92,17 @@ public class TituloTableModel implements TableModel {
 
     @Override
     public void setValueAt(Object o, int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void addTableModelListener(TableModelListener tl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void removeTableModelListener(TableModelListener tl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
     
