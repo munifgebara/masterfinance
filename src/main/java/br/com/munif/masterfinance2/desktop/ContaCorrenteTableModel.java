@@ -25,7 +25,7 @@ public class ContaCorrenteTableModel implements TableModel{
     }
     
     public ContaCorrenteTableModel(){
-        lista = Programa.getEntityManager().createQuery("fron ContaCorrente").getResultList();
+        lista = Programa.getEntityManager().createQuery("from ContaCorrente").getResultList();
     }
     
     
