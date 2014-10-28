@@ -48,7 +48,7 @@ public class ContaCorrenteTableModel implements TableModel{
                 return "Banco";
             case 2:
                 return "Conta";
-            case 4:
+            case 3:
                 return "Descricao";
         }
         return "";
@@ -63,7 +63,7 @@ public class ContaCorrenteTableModel implements TableModel{
                 return String.class;
             case 2:
                 return String.class;
-            case 4:
+            case 3:
                 return String.class;
         }
         return String.class;
@@ -84,7 +84,7 @@ public class ContaCorrenteTableModel implements TableModel{
                 return contaCorrente.getBanco();
             case 2:
                 return contaCorrente.getConta();
-            case 4:
+            case 3:
                 return contaCorrente.getDescricao();
         }
         return String.class;

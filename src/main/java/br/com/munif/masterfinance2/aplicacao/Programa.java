@@ -5,6 +5,7 @@
  */
 package br.com.munif.masterfinance2.aplicacao;
 
+import br.com.munif.masterfinance2.desktop.ContaCorrenteConsulta;
 import br.com.munif.masterfinance2.entidades.Fisica;
 import java.util.Properties;
 import javax.persistence.EntityManager;
@@ -29,6 +30,8 @@ public class Programa {
         f.setCpf("0123");
         em.persist(f);
         em.getTransaction().commit();
+        
+        new ContaCorrenteConsulta();
 
     }
 
