@@ -6,6 +6,7 @@
 package br.com.munif.masterfinance2.aplicacao;
 
 import br.com.munif.masterfinance2.desktop.ContaCorrenteConsulta;
+import br.com.munif.masterfinance2.desktop.TituloConsulta;
 import br.com.munif.masterfinance2.entidades.Fisica;
 import java.util.Properties;
 import javax.persistence.EntityManager;
@@ -33,6 +34,9 @@ public class Programa {
         
         new ContaCorrenteConsulta();
 
+        
+        
+        new TituloConsulta();
     }
 
     public static void createEntityManagerFactory() {
