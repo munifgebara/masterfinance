@@ -5,10 +5,13 @@
  */
 package br.com.munif.masterfinance2.desktop;
 
+import br.com.munif.masterfinance2.aplicacao.Programa;
+import br.com.munif.masterfinance2.entidades.PlanoContas;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.persistence.EntityManager;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -88,7 +91,7 @@ public class PlanoContasConsulta extends JFrame implements ActionListener {
     }
 
     private void pesquisar() {
-        System.out.println("Pesquisar");
+        tabela.setModel(new PlanoContasTableModel(tfFiltro.getText()));
 
     }
 
@@ -101,9 +104,27 @@ public class PlanoContasConsulta extends JFrame implements ActionListener {
     }
 
     private void excluir() {
-        if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)) {
-            System.out.println("excluir");
+        
+        int selecionado = tabela.getSelectedRow();
+        if (selecionado != -1) {
+            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)) {
+                PlanoContasTableModel tableModel = (PlanoContasTableModel) tabela.getModel();
+                PlanoContas objeto = tableModel.getLista().get(selecionado);
+                EntityManager em = Programa.getEntityManager();
+                em.getTransaction().begin();
+                objeto = em.find(PlanoContas.class, objeto.getId());
+                if (objeto == null) {
+                    JOptionPane.showMessageDialog(this, "Este registro já foi excluído.", "Problemas", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    em.remove(objeto);
+                    em.getTransaction().commit();
+                }
+                tabela.setModel(new ContaCorrenteTableModel());
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Você deve selecionar um registro.", "Problemas", JOptionPane.ERROR_MESSAGE);
         }
+       
     }
     
 }
