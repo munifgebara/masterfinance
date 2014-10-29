@@ -10,6 +10,7 @@ import br.com.munif.masterfinance2.entidades.Pessoa;
 import br.com.munif.masterfinance2.entidades.PlanoContas;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Query;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -27,6 +28,13 @@ public class PlanoContasTableModel implements TableModel{
 
     public PlanoContasTableModel() {
         lista = Programa.getEntityManager().createQuery("from PlanoContas").getResultList();        
+    }
+    
+    public PlanoContasTableModel(String text) {
+        Query q=Programa.getEntityManager().createQuery("from PlanoContas obj where upper(obj.codigo) like :filtro or upper(obj.descricao) like :filtro");
+        text="%"+text.toUpperCase()+"%";
+        q.setParameter("filtro", text);
+        lista=q.getResultList();
     }
     
     @Override
