@@ -83,7 +83,7 @@ public class PlanoContas {
     public String toString() {
         return "PlanoContas{" + "id=" + id + ", codigo=" + codigo + ", descricao=" + descricao + ", totalizador=" + totalizador + '}';
     }
-    
+ 
     
 
 }
