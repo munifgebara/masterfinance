@@ -83,7 +83,7 @@ public class TituloTableModel implements TableModel {
             case 0:
                 return titulo.getPessoa().getNome();
             case 1:
-                return titulo.getData_vencimento();
+                return titulo.getDataVencimento();
             case 2:
                 return titulo.getValor();
         }

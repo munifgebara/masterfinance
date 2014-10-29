@@ -28,29 +28,42 @@ public class Programa {
 
     public static void main(String[] args) {
         createEntityManagerFactory();
-        
-        EntityManager em=emf.createEntityManager();
+
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Fisica f=new Fisica();
+        Fisica f = new Fisica();
         f.setNome("Munif");
         f.setCpf("0123");
         em.persist(f);
-        
+
         insereContasCorrente(em);
-        
+        insereFisica(em);
+        insereJuridica(em);
+        insereTitulo(em);
+        insereMovimento(em);
+        inserePlanoContas(em);
+
         em.getTransaction().commit();
-        
+
         new FisicaConsulta();
-        
+
         new JuridicaConsulta();
-        
+
         new MovimentoConsulta();
-        
+
         new PlanoContasConsulta();
-        
+
         new TituloConsulta();
-        
+
         new ContaCorrenteConsulta();
+    }
+
+    public static void createEntityManagerFactory() {
+        emf = Persistence.createEntityManagerFactory("UnidadeDePersistencia");
+    }
+
+    public static EntityManager getEntityManager() {
+        return emf.createEntityManager();
     }
 
     public static void insereContasCorrente(EntityManager em) {
@@ -58,14 +71,26 @@ public class Programa {
         em.persist(new ContaCorrente("Itaú Conta Corrente", "Itaú", "6667", "22472-6", 3500.0));
         em.persist(new ContaCorrente("Poupança", "Itaú", "6667", "22477-1", 0.0));
         em.persist(new ContaCorrente("Visa", "", "", "", 2000.0));
-        em.persist(new ContaCorrente("Empresa","Banco do Brasil", "012", "1234", 300.0));
+        em.persist(new ContaCorrente("Empresa", "Banco do Brasil", "012", "1234", 300.0));
     }
 
-    public static void createEntityManagerFactory() {
-        emf=Persistence.createEntityManagerFactory("UnidadeDePersistencia");
+    private static void insereFisica(EntityManager em) {
+
     }
-    
-    public static EntityManager getEntityManager(){
-        return emf.createEntityManager();
+
+    private static void insereJuridica(EntityManager em) {
+
+    }
+
+    private static void insereTitulo(EntityManager em) {
+
+    }
+
+    private static void insereMovimento(EntityManager em) {
+
+    }
+
+    private static void inserePlanoContas(EntityManager em) {
+
     }
 }

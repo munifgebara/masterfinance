@@ -110,8 +110,12 @@ public class ContaCorrenteConsulta extends JFrame implements ActionListener {
                 EntityManager em = Programa.getEntityManager();
                 em.getTransaction().begin();
                 objeto = em.find(ContaCorrente.class, objeto.getId());
-                em.remove(objeto);
-                em.getTransaction().commit();
+                if (objeto == null) {
+                    JOptionPane.showMessageDialog(this, "Este registro já foi excluído.", "Problemas", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    em.remove(objeto);
+                    em.getTransaction().commit();
+                }
                 tabela.setModel(new ContaCorrenteTableModel());
             }
         } else {
@@ -119,4 +123,3 @@ public class ContaCorrenteConsulta extends JFrame implements ActionListener {
         }
     }
 }
-

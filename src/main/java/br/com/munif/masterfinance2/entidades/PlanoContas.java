@@ -25,6 +25,15 @@ public class PlanoContas {
     private String descricao;
     private Boolean totalizador;
 
+    public PlanoContas() {
+    }
+
+    public PlanoContas(String codigo, String descricao, Boolean totalizador) {
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.totalizador = totalizador;
+    }
+
     public Long getId() {
         return id;
     }
@@ -83,7 +92,5 @@ public class PlanoContas {
     public String toString() {
         return "PlanoContas{" + "id=" + id + ", codigo=" + codigo + ", descricao=" + descricao + ", totalizador=" + totalizador + '}';
     }
- 
-    
 
 }

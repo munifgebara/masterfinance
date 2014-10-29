@@ -29,8 +29,9 @@ public class ContaCorrenteTableModel implements TableModel{
     public ContaCorrenteTableModel(){
         lista = Programa.getEntityManager().createQuery("from ContaCorrente").getResultList();
     }
+    
     public ContaCorrenteTableModel(String text) {
-        Query q=Programa.getEntityManager().createQuery("from ContaCorrente obj where upper(obj.descricao) like :filtro");
+        Query q=Programa.getEntityManager().createQuery("from ContaCorrente obj where upper(obj.descricao) like :filtro or upper(obj.banco) like :filtro");
         text="%"+text.toUpperCase()+"%";
         q.setParameter("filtro", text);
         lista=q.getResultList();

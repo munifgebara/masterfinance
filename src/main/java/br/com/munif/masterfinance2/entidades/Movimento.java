@@ -30,6 +30,15 @@ public class Movimento {
     
     @ManyToOne
     private ContaCorrente contaCorrente;
+
+    public Movimento() {
+    }
+
+    public Movimento(Date quando, Double valor, ContaCorrente contaCorrente) {
+        this.quando = quando;
+        this.valor = valor;
+        this.contaCorrente = contaCorrente;
+    }
     
     public Long getId() {
         return id;
