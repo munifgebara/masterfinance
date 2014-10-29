@@ -32,6 +32,7 @@ import br.com.munif.masterfinance2.desktop.PlanoContasConsulta;
 import br.com.munif.masterfinance2.desktop.TituloConsulta;
 import br.com.munif.masterfinance2.entidades.ContaCorrente;
 import br.com.munif.masterfinance2.entidades.Fisica;
+import br.com.munif.masterfinance2.entidades.PlanoContas;
 import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -111,5 +112,11 @@ public class Programa {
 
     private static void inserePlanoContas(EntityManager em) {
 
+        em.persist (new PlanoContas ("1","Despesa", true));
+        em.persist (new PlanoContas ("1.1","Despesa Fixa", false));
+        em.persist (new PlanoContas ("1.2","Despesa Variável", false));
+        em.persist (new PlanoContas ("2","Receita", true));
+        em.persist (new PlanoContas ("2.1","Salário", false));
+        em.persist (new PlanoContas ("2.2","Despesa Eventual", false));
     }
 }
