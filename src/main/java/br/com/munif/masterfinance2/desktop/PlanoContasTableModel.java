@@ -79,9 +79,9 @@ public class PlanoContasTableModel implements TableModel{
         PlanoContas planoContas=lista.get(rowIndex);
         switch(columnIndex) {
             case 0:
-                return planoContas.getDescricao();
+                return planoContas.getcodigo();
             case 1:
-                return planoContas.isTotalizador();            
+                return planoContas.getdescricao();            
         }
         return String.class;
     }

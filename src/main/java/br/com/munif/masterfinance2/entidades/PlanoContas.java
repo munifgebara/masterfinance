@@ -93,4 +93,12 @@ public class PlanoContas {
         return "PlanoContas{" + "id=" + id + ", codigo=" + codigo + ", descricao=" + descricao + ", totalizador=" + totalizador + '}';
     }
 
+    public Object getcodigo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getdescricao() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
