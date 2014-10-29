@@ -32,6 +32,19 @@ public class Pessoa {
     private String uf;
     private String cep;
 
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String email, String telefone, String endereco, String cidade, String uf, String cep) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.cep = cep;
+    }
+
     public Long getId() {
         return id;
     }
@@ -122,7 +135,5 @@ public class Pessoa {
     public String toString() {
         return "Pessoa{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + ", endereco=" + endereco + ", cidade=" + cidade + ", uf=" + uf + ", cep=" + cep + '}';
     }
-    
-    
 
 }

@@ -16,6 +16,14 @@ public class Fisica extends Pessoa {
 
     private String cpf;
 
+    public Fisica() {
+    }
+
+    public Fisica(String nome, String email, String telefone, String endereco, String cidade, String uf, String cep, String cpf) {
+        super(nome, email, telefone, endereco, cidade, uf, cep);
+        this.cpf = cpf;
+    }
+
     public String getCpf() {
         return cpf;
     }

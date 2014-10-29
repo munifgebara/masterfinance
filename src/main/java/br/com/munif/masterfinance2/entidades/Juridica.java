@@ -17,6 +17,16 @@ public class Juridica extends Pessoa {
     
     private String cnpj;
 
+    public Juridica() {
+    }
+
+    public Juridica(String cnpj, String nome, String email, String telefone, String endereco, String cidade, String uf, String cep) {
+        super(nome, email, telefone, endereco, cidade, uf, cep);
+        this.cnpj = cnpj;
+    }
+    
+    
+
     public String getCnpj() {
         return cnpj;
     }

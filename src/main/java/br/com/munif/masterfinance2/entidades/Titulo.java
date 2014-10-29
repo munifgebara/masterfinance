@@ -24,9 +24,9 @@ public class Titulo {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date data_vencimento;
+    private Date dataVencimento;
     private Double valor;
     private Double acrescimo;
     private Double desconto;
@@ -40,36 +40,34 @@ public class Titulo {
     @OneToMany
     private List<Movimento> movimentos;
 
-    public List<Movimento> getMovimentos() {
-        return movimentos;
+    public Titulo() {
     }
 
-    public void setMovimentos(List<Movimento> movimentos) {
+    public Titulo(Date dataVencimento, Double valor, Double acrescimo, Double desconto, Boolean pago, Pessoa pessoa, PlanoContas planoContas, List<Movimento> movimentos) {
+        this.dataVencimento = dataVencimento;
+        this.valor = valor;
+        this.acrescimo = acrescimo;
+        this.desconto = desconto;
+        this.pago = pago;
+        this.pessoa = pessoa;
+        this.planoContas = planoContas;
         this.movimentos = movimentos;
     }
 
-    public PlanoContas getPlanoContas() {
-        return planoContas;
+    public Long getId() {
+        return id;
     }
 
-    public void setPlanoContas(PlanoContas planoContas) {
-        this.planoContas = planoContas;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Date getDataVencimento() {
+        return dataVencimento;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Date getData_vencimento() {
-        return data_vencimento;
-    }
-
-    public void setData_vencimento(Date data_vencimento) {
-        this.data_vencimento = data_vencimento;
+    public void setDataVencimento(Date dataVencimento) {
+        this.dataVencimento = dataVencimento;
     }
 
     public Double getValor() {
@@ -96,7 +94,7 @@ public class Titulo {
         this.desconto = desconto;
     }
 
-    public Boolean getPago() {
+    public Boolean isPago() {
         return pago;
     }
 
@@ -104,18 +102,34 @@ public class Titulo {
         this.pago = pago;
     }
 
-    public Long getID() {
-        return ID;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public PlanoContas getPlanoContas() {
+        return planoContas;
+    }
+
+    public void setPlanoContas(PlanoContas planoContas) {
+        this.planoContas = planoContas;
+    }
+
+    public List<Movimento> getMovimentos() {
+        return movimentos;
+    }
+
+    public void setMovimentos(List<Movimento> movimentos) {
+        this.movimentos = movimentos;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.ID);
+        int hash = 5;
+        hash = 41 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -128,7 +142,7 @@ public class Titulo {
             return false;
         }
         final Titulo other = (Titulo) obj;
-        if (!Objects.equals(this.ID, other.ID)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -136,8 +150,7 @@ public class Titulo {
 
     @Override
     public String toString() {
-        return "Titulo{" + "ID=" + ID + ", data_vencimento=" + data_vencimento + ", valor=" + valor + ", acrescimo=" + acrescimo + ", desconto=" + desconto + ", pago=" + pago + ", pessoa=" + pessoa + ", planoContas=" + planoContas + ", movimentos=" + movimentos + '}';
+        return "Titulo{" + "id=" + id + ", dataVencimento=" + dataVencimento + ", valor=" + valor + ", acrescimo=" + acrescimo + ", desconto=" + desconto + ", pago=" + pago + ", pessoa=" + pessoa + ", planoContas=" + planoContas + ", movimentos=" + movimentos + '}';
     }
-    
-    
+
 }

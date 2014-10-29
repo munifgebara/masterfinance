@@ -9,6 +9,7 @@ package br.com.munif.masterfinance2.desktop;
 import br.com.munif.masterfinance2.aplicacao.Programa;
 import br.com.munif.masterfinance2.entidades.ContaCorrente;
 import java.util.List;
+import javax.persistence.Query;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -19,6 +20,7 @@ import javax.swing.table.TableModel;
 public class ContaCorrenteTableModel implements TableModel{
     
     private List<ContaCorrente> lista;
+
     
     public List<ContaCorrente> getLista(){
         return lista;
@@ -26,6 +28,13 @@ public class ContaCorrenteTableModel implements TableModel{
     
     public ContaCorrenteTableModel(){
         lista = Programa.getEntityManager().createQuery("from ContaCorrente").getResultList();
+    }
+    
+    public ContaCorrenteTableModel(String text) {
+        Query q=Programa.getEntityManager().createQuery("from ContaCorrente obj where upper(obj.descricao) like :filtro or upper(obj.banco) like :filtro");
+        text="%"+text.toUpperCase()+"%";
+        q.setParameter("filtro", text);
+        lista=q.getResultList();
     }
     
     
