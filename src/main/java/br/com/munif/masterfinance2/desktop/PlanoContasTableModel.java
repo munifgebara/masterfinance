@@ -51,9 +51,9 @@ public class PlanoContasTableModel implements TableModel{
     public String getColumnName(int columnIndex) {
         switch (columnIndex) {
             case 0:
-                return "Descricao";
+                return "Código";
             case 1:
-                return "Total";
+                return "Descrição";
         }
         return "";
     }
