@@ -5,15 +5,13 @@
  */
 package br.com.munif.masterfinance2.desktop;
 
-import br.com.munif.masterfinance2.aplicacao.Programa;
-import br.com.munif.masterfinance2.entidades.ContaCorrente;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.persistence.EntityManager;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,7 +23,7 @@ import javax.swing.JTextField;
  *
  * @author munifgebarajunior
  */
-public class ContaCorrenteConsulta extends JFrame implements ActionListener {
+public class MovimentoConsulta extends JFrame implements ActionListener {
 
     private JButton btExcluir;
     private JButton btAlterar;
@@ -39,11 +37,11 @@ public class ContaCorrenteConsulta extends JFrame implements ActionListener {
     private JPanel pBotoes;
 
     //Pesquisar bordas no swing
-    public ContaCorrenteConsulta() {
-        setTitle("Cadastro de Conta Corrente");
+    public MovimentoConsulta() {
+        setTitle("Cadastro de Movimentos");
         setLayout(new BorderLayout());
         pBotoes = new JPanel(new FlowLayout());
-        tabela = new JTable(new ContaCorrenteTableModel());
+        tabela = new JTable(new MovimentoTableModel());
         btExcluir = new JButton("Excluir");
         btAlterar = new JButton("Alterar");
         btIncluir = new JButton("Incluir");
@@ -89,7 +87,7 @@ public class ContaCorrenteConsulta extends JFrame implements ActionListener {
     }
 
     private void pesquisar() {
-        tabela.setModel(new ContaCorrenteTableModel(tfFiltro.getText()));
+        System.out.println("Pesquisar");
 
     }
 
@@ -102,21 +100,9 @@ public class ContaCorrenteConsulta extends JFrame implements ActionListener {
     }
 
     private void excluir() {
-        int selecionado = tabela.getSelectedRow();
-        if (selecionado != -1) {
-            if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)) {
-                ContaCorrenteTableModel tableModel = (ContaCorrenteTableModel) tabela.getModel();
-                ContaCorrente objeto = tableModel.getLista().get(selecionado);
-                EntityManager em = Programa.getEntityManager();
-                em.getTransaction().begin();
-                objeto = em.find(ContaCorrente.class, objeto.getId());
-                em.remove(objeto);
-                em.getTransaction().commit();
-                tabela.setModel(new ContaCorrenteTableModel());
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Você deve selecionar um registro.", "Problemas", JOptionPane.ERROR_MESSAGE);
+        if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(this, "Confirma exclusão?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE)) {
+            System.out.println("excluir");
         }
     }
-}
 
+}

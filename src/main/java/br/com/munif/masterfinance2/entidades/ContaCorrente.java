@@ -16,16 +16,27 @@ import javax.persistence.Id;
  */
 @Entity
 public class ContaCorrente {
-    
+
     @Id
     @GeneratedValue
     private Long id;
-    
+
     private String descricao;
     private String banco;
     private String agencia;
     private String conta;
     private Double limite;
+
+    public ContaCorrente() {
+    }
+
+    public ContaCorrente(String descricao, String banco, String agencia, String conta, Double limite) {
+        this.descricao = descricao;
+        this.banco = banco;
+        this.agencia = agencia;
+        this.conta = conta;
+        this.limite = limite;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -101,7 +112,5 @@ public class ContaCorrente {
     public String toString() {
         return "ContaCorrente{" + "id=" + id + ", descricao=" + descricao + ", banco=" + banco + ", agencia=" + agencia + ", conta=" + conta + ", limite=" + limite + '}';
     }
-    
-    
 
 }
