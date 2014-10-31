@@ -44,7 +44,7 @@ public class PlanoContasTableModel implements TableModel{
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -64,7 +64,7 @@ public class PlanoContasTableModel implements TableModel{
             case 0:
                 return String.class;
             case 1:
-                return Boolean.class;
+                return String.class;
         }
         return String.class;
     }
